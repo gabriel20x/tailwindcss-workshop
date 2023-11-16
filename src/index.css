@@ -1,13 +1,88 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* La capa de base, te permite modificar las clases base para las diferentes tags de html */
+
+@layer base {
+    h2 {
+        @apply text-3xl font-bold;
+    }
+    h3 {
+        @apply text-2xl font-bold;
+    }
+    h6 {
+        @apply text-lg font-bold;
+    }
+    article {
+        @apply flex flex-col
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* La capa de componentes, te permite declarar clases con el decorador @apply, Puede hacerse en una linea, pero una forma mas limpia de realizarlo es separando los estilos por categorias */
+
+@layer components {
+    .main-container {
+        /* Estilos del texto */
+        @apply text-white;
+        /* Configuracion del contenedor */
+        @apply h-screen bg-gray-900;
+        /* Estructura del contenido */
+        @apply flex flex-col items-center justify-center gap-4;
+    }
+
+    /*Container Styles*/
+    .card-container {
+        @apply w-[25.4375rem] h-full max-h-[56.625rem] px-4 pb-10 flex flex-col gap-8 overflow-hidden relative rounded-t-[50px] bg-white text-gray-950
+    }
+    .heart {
+        @apply absolute z-10 top-10 left-6 cursor-pointer
+    }
+    .arrow {
+        @apply absolute z-10 top-10 right-6 cursor-pointer
+    }
+    /*Presentation Styles */
+    .card-presentation {
+        @apply relative flex items-end justify-center h-[19.125rem]
+    }
+    .circle {
+        @apply absolute -left-4 bottom-[0%] w-[40rem] aspect-square rounded-full
+    }
+    .principal-image {
+        @apply z-10
+    }
+    /*Description */
+    .title {
+        @apply flex justify-between items-end pb-2
+    }
+    .description {
+        @apply line-clamp-3 text-gray-400 text-xl leading-tight
+    }
+
+    /*Button Styles*/
+    .bg-button {
+        @apply bg-gradient-to-b from-70% from-white to-gray-300
+    }
+    .button {
+        @apply flex items-center justify-center w-[5.125rem] py-2 rounded-xl inset-1 border-2 border-gray-300 cursor-pointer hover:bg-button
+    }
+    .button-container {
+        @apply flex gap-4
+    }
+    .selected-button {
+        @apply ring-2 ring-black bg-button
+    }
+    .size-selector {
+        @apply grid grid-cols-4 gap-2
+    }
+    .add-button {
+        @apply bg-gray-800 text-white hover:bg-gray-700 py-2 rounded-lg
+    }
+
+}
+
+@layer utilities {
+    .content-auto {
+        content-visibility: auto;
+    }
 }
